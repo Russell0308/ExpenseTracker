@@ -36,4 +36,12 @@ select_bank_balance = """SELECT * FROM banks WHERE account_type="""
 
 get_balance_banking = """SELECT balance FROM banks WHERE account_type='Banking'"""
 
+get_balance_savings = """SELECT balance FROM banks WHERE account_type='Savings'"""
+
 get_paymethod_balance = """SELECT * FROM paymethods WHERE method_name="""
+
+# UPDAATE TABLE VALUES #
+update_bank_balance = """UPDATE banks SET balance=? WHERE account_type=?;"""
+
+update_card_balance = """UPDATE paymethods SET method_balance=? WHERE method_name=?;"""
+

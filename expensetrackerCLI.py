@@ -7,16 +7,16 @@ year = datetime.datetime.now().year
 message = ''
 
 username = 'russ'
-password = 'sfhkl'
+password = 'sfhkl' # username and password are placeholders
 login = False
 
-modes = ['Log purchase', 'Log income', 'View bank balance', 'View card balance', 'View calender', 'View important stats', 'Set budget', 'Save up', 'Settings']
+modes = ['Log purchase', 'Log income', 'Card payment', 'View bank balance', 'View card balance', 'View calender', 'View important stats', 'Set budget', 'Save up', 'Settings']
 
 def post_login():
     global db_conn
     db_conn = sqlite3.connect('db.sqlite3')
     print('\n'*100)
-    print('Hello, Russell')
+    print('Hello,', username)
 
 
 def execute_query(query):
@@ -70,9 +70,34 @@ def log_purchase():
     location = input('City: ')
     recurring = input('Recurring: ')
     
+    amount = float(amount)
+
+    if payment_method == 'Amex':
+        current_balance = execute_query(q.get_paymethod_balance + "'Amex'")
+        new_balance = amount + current_balance[0][3]
+        insert = (new_balance, payment_method)
+        insert_execute_query(q.update_card_balance, insert)
+
+    elif payment_method == 'Visa':
+        current_balance = execute_query(q.get_paymethod_balance + "'Visa'")
+        new_balance = amount + current_balance[0][3]
+        insert = (new_balance, payment_method)
+        insert_execute_query(q.update_card_balance, insert)
+
+    elif payment_method == 'Apple card':
+        current_balance = execute_query(q.get_paymethod_balance + "'Apple card'")
+        new_balance = amount + current_balance[0][3]
+        insert = (new_balance, payment_method)
+        insert_execute_query(q.update_card_balance, insert)
+
+    elif payment_method == 'Banking':
+        current_balance = execute_query(q.get_balance_banking)
+        new_balance = amount + current_balance[0][0]
+        insert = (new_balance, payment_method)
+        insert_execute_query(q.update_bank_balance, insert)
+
     if len(date) == 5:
         date = str(year) + '-' + date
-    amount = int(amount)
     recurring = bool(recurring)
     
     log_all = (date, time, description, amount, payment_method, merchant_name, location, recurring)
@@ -100,6 +125,37 @@ def view_card_balance():
     query = q.get_paymethod_balance + "'" + card_name + "'"
     paymethod_balance = execute_query(query)
     print(paymethod_balance[0][1] + ': $' + str(paymethod_balance[0][3]))
+
+
+def card_payment():
+    card = input('Which card?: ')
+    payment_amt = input('How much are you paying?: ')
+    if payment_amt == 'all':
+        card_amt = execute_query(q.get_paymethod_balance + "'" + card + "'")
+        bank_amt = execute_query(q.get_balance_banking)
+        new_bank_amt = bank_amt[0][0] - card_amt[0][3]
+        new_bank_amt = round(new_bank_amt, 2)
+        print('Banking: $' + str(new_bank_amt))
+        new_card_amt = 0
+        print(card + ': $' + str(new_card_amt))
+        insert_bank = (new_bank_amt, 'Banking')
+        insert_execute_query(q.update_bank_balance, insert_bank)
+        insert_card = (new_card_amt, card)
+        insert_execute_query(q.update_card_balance, insert_card)
+        
+    else: 
+        card_amt = execute_query(q.get_paymethod_balance + "'" + card + "'")
+        bank_amt = execute_query(q.get_balance_banking)
+        new_bank_amt = bank_amt[0][0] - float(payment_amt)
+        new_bank_amt = round(new_bank_amt, 2)
+        print('Banking: $' + str(new_bank_amt))
+        new_card_amt = card_amt[0][3] - float(payment_amt)
+        new_card_amt = round(new_card_amt, 2)
+        print(card_amt[0][1] + ': $' + str(new_card_amt))
+        insert_bank = (new_bank_amt, 'Banking')
+        insert_execute_query(q.update_bank_balance, insert_bank)
+        insert_card = (new_card_amt, card)
+        insert_execute_query(q.update_card_balance, insert_card)
 
 
 def important_stats():
@@ -141,13 +197,28 @@ def main():
             log_income()
             break
         elif mode_input == '2':
-            view_bank_balance()
+            card_payment()
             break
         elif mode_input == '3':
+            view_bank_balance()
+            break
+        elif mode_input == '4':
             view_card_balance()
             break
         elif mode_input == '5':
+            #view_calender()
+            break
+        elif mode_input == '6':
             important_stats()
+            break
+        elif mode_input == '7':
+            #set_budget()
+            break
+        elif mode_input == '8':
+            #save_up()
+            break
+        elif mode_input == '9':
+            #settings()
             break
         else:
             print('Try again!')
