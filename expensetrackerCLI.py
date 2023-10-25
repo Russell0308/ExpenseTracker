@@ -108,8 +108,10 @@ def log_income():
     income_amount = input('How much did you make?: ')
     current_balance = execute_query(q.get_balance_banking)
     new_balance = float(income_amount) + float(current_balance[0][0])
+    insert = (new_balance, 'Banking')
+    insert_execute_query(q.update_bank_balance, insert)
     print('$' + str(new_balance))
-
+    
 
 def view_bank_balance():
     account_type = input('Which account?: ')
@@ -165,7 +167,7 @@ def important_stats():
     bank_balance0 = execute_query(query0)
     print('---'*10)
     print(bank_balance[0][1] + ' Balances')
-    print('Total: $' + str(bank_balance[0][3] + bank_balance0[0][3]))
+    print('Total: $' + str(round(float(bank_balance[0][3] + bank_balance0[0][3]), 2)))
     print(bank_balance[0][2] + ': $' + str(bank_balance[0][3]))
     print(bank_balance0[0][2] + ': $' + str(bank_balance0[0][3]))
 
@@ -192,33 +194,29 @@ def main():
         mode_input = input('')
         if mode_input == '0':
             log_purchase()
-            break
         elif mode_input == '1':
             log_income()
-            break
         elif mode_input == '2':
             card_payment()
-            break
         elif mode_input == '3':
             view_bank_balance()
-            break
         elif mode_input == '4':
             view_card_balance()
-            break
         elif mode_input == '5':
             #view_calender()
-            break
+            pass
         elif mode_input == '6':
             important_stats()
-            break
         elif mode_input == '7':
             #set_budget()
-            break
+            pass
         elif mode_input == '8':
             #save_up()
-            break
+            pass
         elif mode_input == '9':
             #settings()
+            pass
+        elif mode_input == 'exit':
             break
         else:
             print('Try again!')
