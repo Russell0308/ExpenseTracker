@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import queries as q
 import datetime
@@ -246,6 +247,19 @@ def save_up():
             try_again = True
 
 
+def delete_db():
+    danger = input("Enter 'db.sqlite3': ")
+    if danger == 'db.sqlite3':
+        delorkeep = input('Are you sure you want to delete(Y/n) ')
+        if delorkeep == 'Y':
+            os.system('rm db.sqlite3')
+            quit()
+        else:
+            pass
+    else:
+        pass
+
+
 def main():
     print('- Select one -')
     while True:
@@ -267,6 +281,8 @@ def main():
             save_up()
         elif mode_input == '6':
             settings.settings_main()
+        elif mode_input == '7':
+            delete_db()
         elif mode_input == 'exit':
             break
         else:

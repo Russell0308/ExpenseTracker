@@ -18,6 +18,7 @@ def settings_main():
             break
         elif setting_input == '1':
             paymethod_settings()
+            break
         elif setting_input == '2':
             pass
         elif setting_input == '3':
@@ -107,17 +108,22 @@ def paymethod_settings():
     if mode == 'N':
         new_paymethod_name = input("Enter new payment methods name: ")
         new_paymethod_type = input("Enter new payment methods type: ")
-        new_paymethod_last_4 = input("Enter new payment methods last 4: (Optional enter to skip)")
+        new_paymethod_last_4 = input("Enter new payment methods last 4 (Optional enter to skip): ")
         new_paymethod_balance = input("Enter new payment methods current balance: ")
-        new_paymethod_limit = input("Enter new payment methods current limit: (Optional enter to skip)")
-        if new_paymethod_last_4 == '':
-            new_paymethod_last_4 = None
-        elif len(new_paymethod_last_4) == 4:
-            try:
-                int(new_paymethod_last_4)
-            except X:
-                print(X)
-            
+        new_paymethod_limit = input("Enter new payment methods current limit (Optional enter to skip): ")
+        new_paymethod_data = 
+        def check_input(new_paymethod_name, new_paymethod_type, new_paymethod_last_4, new_paymethod_balance, new_paymethod_limit):
+            return True
+        if check_input(new_paymethod_name, new_paymethod_type, new_paymethod_last_4, new_paymethod_balance, new_paymethod_limit) == True:
+            ### To DB
+
+        else:
+            return
+
+    elif mode == 'E':
+        pass
+    elif mode == 'D':
+        pass
 
 
 

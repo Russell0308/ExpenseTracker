@@ -62,6 +62,8 @@ insert_table_expense = """INSERT INTO expenses(date, time, description, amount, 
 
 insert_table_banks = """INSERT INTO banks(bank_name, account_type, balance) VALUES (?, ?, ?)"""
 
+insert_table_paymethod = """INSERT INTO paymethods(method_name, method_type, method_last_4, method_balance, method_limit) VALUES (?, ?, ?, ?, ?)"""
+
 insert_table_income = """INSERT INTO income(pay_date, amount, gross_amount) VALUES (?, ?, ?);"""
 
 insert_table_save_up = """INSERT INTO saveup(name, price, target_date, priority, financed, downpayment) VALUES (?, ?, ?, ?, ?, ?);"""
