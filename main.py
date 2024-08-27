@@ -303,11 +303,7 @@ if __name__ == '__main__':
             break
         else:
             print(message)
-            login_atmp = ''
-            try:
-                login_atmp = input('Try again?(y/n) ')
-            except EOFError:
-                print('No input...')
+            login_atmp = input('Try again?(y/n) ')
             if login_atmp != 'y':
                 exit()
 # END #

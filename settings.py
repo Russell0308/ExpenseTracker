@@ -111,12 +111,12 @@ def paymethod_settings():
         new_paymethod_last_4 = input("Enter new payment methods last 4 (Optional enter to skip): ")
         new_paymethod_balance = input("Enter new payment methods current balance: ")
         new_paymethod_limit = input("Enter new payment methods current limit (Optional enter to skip): ")
-        new_paymethod_data = 
+        #new_paymethod_data = 
         def check_input(new_paymethod_name, new_paymethod_type, new_paymethod_last_4, new_paymethod_balance, new_paymethod_limit):
             return True
         if check_input(new_paymethod_name, new_paymethod_type, new_paymethod_last_4, new_paymethod_balance, new_paymethod_limit) == True:
             ### To DB
-
+            pass
         else:
             return
 

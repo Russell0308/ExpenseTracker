@@ -1,8 +1,13 @@
-import main
 import datetime
 
 
 def input_check(date, time, description, amount, payment_method, merchant_name, location, recurring):
+    check_list = []
+
+
+    ### Date check
+    date_check = True
+
     if date == 'today' or date == 'Today':
         pass
     elif date == 'yesterday' or date == 'Yesterday':
@@ -12,18 +17,31 @@ def input_check(date, time, description, amount, payment_method, merchant_name, 
         if month.isdigit() == True and day.isdigit() == True:
             pass
         else:
-            return False
+            date_check = False
+            check_list.append(date_check)
     elif len(date) == 4:
         month = date[:2]
         day = date[2:]
         if month.isdigit() == True and day.isdigit == True:
             pass
         else:
-            return False
+            date_check = False
+            check_list.append(date_check)
     else:
-        return False
-    return True
-    
+        date_check = False
+        check_list.append(date_check)
+        
+    check_list.append(date_check)
+
+
+    ### time_check
+    time_check = True
+    if time[:1].isdigit() and time[]:
+
+
+
+    return check_list
+
 
 print(input_check("02/01", "1", "1", "1", "1", "!", "1", "True"))
 
