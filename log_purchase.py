@@ -1,4 +1,4 @@
-import datetime
+### import datetime
 
 
 def input_check(date, time, description, amount, payment_method, merchant_name, location, recurring):
@@ -52,6 +52,8 @@ def input_check(date, time, description, amount, payment_method, merchant_name, 
 
     ### description
     description_check = True
+
+    description = str(description)
     
     check_list.append(description_check)
 
@@ -61,13 +63,15 @@ def input_check(date, time, description, amount, payment_method, merchant_name, 
     try: 
         int(amount)
         check_list.append(amount_check)
-    except X:
-        print(X)
+    except Exception:
+        print(Exception)
 
     return check_list
 
+    ### payment_method
+    
 
-print(input_check("02/01", "06:34a", "1", "eourtfp'asedjf", "1", "!", "1", "True"))
+print(input_check("02/01", "06:34a", "1", "101", "1", "!", "1", "True"))
 
 def main(date, time, description, amount, payment_method, merchant_name, location, recurring):
     pass
