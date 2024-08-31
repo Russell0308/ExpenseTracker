@@ -34,16 +34,40 @@ def input_check(date, time, description, amount, payment_method, merchant_name, 
     check_list.append(date_check)
 
 
-    ### time_check
+    ### time_check   FORMAT | 01:01p 
     time_check = True
-    if time[:1].isdigit() and time[]:
+    
+    if len(time) != 6:       ### Remove to make input easier
+        time_check = False
+    elif time[:1].isdigit() == False and time[2:4].isdigit() == False:
+        time_check = False
+    elif time[2] != ':':      ### Remove to make input easier
+        time_check = False
+    elif not time[5] == 'p' and not time[5] == 'a':   
+        time_check = False
 
 
+    check_list.append(time_check)
+
+
+    ### description
+    description_check = True
+    
+    check_list.append(description_check)
+
+    ### amount_check
+    amount_check = True
+
+    try: 
+        int(amount)
+        check_list.append(amount_check)
+    except X:
+        print(X)
 
     return check_list
 
 
-print(input_check("02/01", "1", "1", "1", "1", "!", "1", "True"))
+print(input_check("02/01", "06:34a", "1", "eourtfp'asedjf", "1", "!", "1", "True"))
 
 def main(date, time, description, amount, payment_method, merchant_name, location, recurring):
     pass
