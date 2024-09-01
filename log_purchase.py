@@ -1,7 +1,3 @@
-### import datetime
-
-
-
 def check_date(date):
     date_check = True
 
@@ -72,6 +68,31 @@ def check_paymethod(payment_method, names):
     return paymethod_check
 
 
+def check_merchant_name(merchant_name):
+    merchant_name_check = True
+
+    merchant_name = str(merchant_name)
+
+    return merchant_name_check
+
+
+def check_location(location):
+    location_check = True
+    
+    location = str(location)
+
+    return location_check
+
+def check_recurring(recurring):
+    recurring_check = True
+
+    if recurring != True and recurring != False:
+        recurring_check = False
+        
+    return recurring_check
+
+
+
 def check_input(date, time, description, amount, payment_method, paymethod_names, merchant_name, location, recurring):
     check_list = []
 
@@ -89,6 +110,16 @@ def check_input(date, time, description, amount, payment_method, paymethod_names
 
     checked_paymethod = check_paymethod(payment_method, paymethod_names)
     check_list.append(checked_paymethod)
+    
+    checked_merchant_name = check_merchant_name(merchant_name)
+    check_list.append(checked_merchant_name)
 
-print(input_check("02/01", "06:34a", "1", "101", "1", "!", "1", "True"))
+    checked_location = check_location(location)
+    check_list.append(checked_location)
 
+    checked_recurring = check_recurring(recurring)
+    check_list.append(checked_recurring)
+
+    return check_list
+
+#print(check_input("02/01", "06:34a", "1", "101", "Amex", "Amex, Apple Card, Visa, Mastercard", "merchant", "123 merchant st", "True")
