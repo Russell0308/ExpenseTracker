@@ -30,3 +30,5 @@ def create_tables():
 def log_purchase(data):
     insert_execute_query(q.insert_table_expense, data)
 
+
+

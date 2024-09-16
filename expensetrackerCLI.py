@@ -41,3 +41,7 @@ def main():
             break
         else:
             print('Try again!')
+
+
+if __name__ == '__main__':
+    main()

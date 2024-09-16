@@ -1,12 +1,11 @@
 import queries as q
-import main
-
+import to_db 
 
 lis_of_settings = ['Bank Accounts', 'Credit/Debit Card Accounts']
 
 
 def settings_main():
-    main.post_login()
+    #main.post_login()
     print('\n' * 100)
     print('- Select one -')
     for i in range(len(lis_of_settings)):

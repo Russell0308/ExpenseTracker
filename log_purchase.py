@@ -122,8 +122,8 @@ def check_input(date, time, description, amount, payment_method, paymethod_names
 
     return check_list
 
-def main():
-    pass
+def main(date, time, description, amount, paymethod, merchant_name, location, recurring):
+    
 
 
 #print(check_input("02/01", "06:34a", "1", "101", "Amex", "Amex, Apple Card, Visa, Mastercard", "merchant", "123 merchant st", "True")
