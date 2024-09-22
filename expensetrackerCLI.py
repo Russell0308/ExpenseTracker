@@ -10,13 +10,30 @@ def list_modes():
         print(i, MODES[i])
 
 
+def log_purchase_mode():
+    date = input('Date: ')
+    time = input('Time: ')
+    description = input('Description: ')
+    amount = input('Amount: ')
+    paymethod = input('Payment method: ')
+    merchant_name = input('Merchant name: ')
+    location = input('Location: ')
+    recurring = input('Recurring: ')
+    
+
+
+
+def log_income_mode():
+    pass
+
+
 def main():
     print('- Select one -')
     while True:
         list_modes()
         mode_input = ('')
         if mode_input == '0':
-            log_purchase.main()
+            log_purchase_mode()
         elif mode_input == '1':
             #log_income.main()
             pass

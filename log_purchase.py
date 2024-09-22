@@ -1,3 +1,5 @@
+import datetime
+
 def check_date(date):
     date_check = True
 
@@ -96,33 +98,42 @@ def check_recurring(recurring):
 def check_input(date, time, description, amount, payment_method, paymethod_names, merchant_name, location, recurring):
     check_list = []
 
-    checked_date = check_date(date)
-    check_list.append(checked_date)
+    if date != None:
+        checked_date = check_date(date)
+        check_list.append(checked_date)
 
-    checked_time = check_time(time)
-    check_list.append(checked_time)
+    if time != None:
+        checked_time = check_time(time)
+        check_list.append(checked_time)
 
-    checked_description = check_description(description)
-    check_list.append(checked_description)
+    if description != None:
+        checked_description = check_description(description)
+        check_list.append(checked_description)
 
-    checked_amount = check_amount(amount)
-    check_list.append(checked_amount)
+    if amount != None:
+        checked_amount = check_amount(amount)
+        check_list.append(checked_amount)
 
-    checked_paymethod = check_paymethod(payment_method, paymethod_names)
-    check_list.append(checked_paymethod)
+    if payment_method != None:
+        checked_paymethod = check_paymethod(payment_method, paymethod_names)
+        check_list.append(checked_paymethod)
     
-    checked_merchant_name = check_merchant_name(merchant_name)
-    check_list.append(checked_merchant_name)
+    if merchant_name != None:
+        checked_merchant_name = check_merchant_name(merchant_name)
+        check_list.append(checked_merchant_name)
 
-    checked_location = check_location(location)
-    check_list.append(checked_location)
+    if location != None:
+        checked_location = check_location(location)
+        check_list.append(checked_location)
 
-    checked_recurring = check_recurring(recurring)
-    check_list.append(checked_recurring)
+    if recurring != None:
+        checked_recurring = check_recurring(recurring)
+        check_list.append(checked_recurring)
 
     return check_list
 
-def main(date, time, description, amount, paymethod, merchant_name, location, recurring):
+def main():
+    pass
     
 
 

@@ -40,6 +40,11 @@ def settings_main():
             print('Try again!')
 
 
+def log_purchase_settings():
+    
+
+
+
 def bank_account_settings():
     mode = input('(N)ew, (E)dit, (D)elete: ')
     if mode == 'N':                                     #NEW 
