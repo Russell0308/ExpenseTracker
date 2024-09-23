@@ -31,4 +31,7 @@ def log_purchase(data):
     insert_execute_query(q.insert_table_expense, data)
 
 
+def get_paymethod_names_out():
+    return execute_query(q.get_paymethod_names)
+
 

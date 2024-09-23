@@ -1,5 +1,5 @@
 import queries as q
-import to_db 
+import db_man 
 
 lis_of_settings = ['Bank Accounts', 'Credit/Debit Card Accounts']
 
@@ -41,7 +41,7 @@ def settings_main():
 
 
 def log_purchase_settings():
-    
+    pass
 
 
 

@@ -1,5 +1,6 @@
 import log_purchase
 import settings
+import db_man
 
 
 MODES = ['Log purchase', 'Log income', 'Card payment', 'Stats', 'Budget', 'Save up', 'Settings']
@@ -11,7 +12,7 @@ def list_modes():
 
 
 def log_purchase_mode():
-    date = input('Date: ')
+    date = input('Date (mm/dd, today or yesterday): ')
     time = input('Time: ')
     description = input('Description: ')
     amount = input('Amount: ')
@@ -19,8 +20,12 @@ def log_purchase_mode():
     merchant_name = input('Merchant name: ')
     location = input('Location: ')
     recurring = input('Recurring: ')
-    
 
+    paymethod_names = db_man.get_paymethod_names_out()
+    
+    data_safe = log_purchase.check_input(date, time, description, amount, paymethod, paymethod_names, merchant_name, location, recurring)
+
+    
 
 
 def log_income_mode():
@@ -31,7 +36,7 @@ def main():
     print('- Select one -')
     while True:
         list_modes()
-        mode_input = ('')
+        mode_input = input('')
         if mode_input == '0':
             log_purchase_mode()
         elif mode_input == '1':

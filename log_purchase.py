@@ -64,6 +64,7 @@ def check_paymethod(payment_method, names):
 
     for i in names:
         if i == payment_method:
+            paymethod_check = True
             return paymethod_check
         else:
             paymethod_check = False
