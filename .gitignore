@@ -2,3 +2,4 @@ db.sqlite3
 ExpenseTrackerWEB.py
 Data
 __pycache__
+.DS_store
