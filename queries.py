@@ -1,4 +1,11 @@
 # CREATE TABLES #
+create_table_users = """
+users(
+user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+username VARCHAR(25),
+password VARCHAR(256),
+db_names VARCHAR(255),
+);"""
 create_table_expense = """CREATE TABLE IF NOT EXISTS
 expenses(
 expense_id INTEGER PRIMARY KEY AUTOINCREMENT,

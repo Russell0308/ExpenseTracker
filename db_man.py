@@ -2,7 +2,16 @@ import queries as q
 import sqlite3
 
 
-db_conn = sqlite3.connect('db.sqlite3')
+U_db_conn = sqlite3.connect('Users_db.sqlite3')
+
+
+def db_connect(username):
+    
+
+    db_conn = sqlite3.connect('db.sqlite3')
+
+
+#def eat_password():
 
 
 def execute_query(query):
