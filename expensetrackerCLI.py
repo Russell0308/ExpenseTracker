@@ -73,17 +73,20 @@ def create_user():    #Started as login became create_user
 
 def login():
     username = input('Enter Username: ')
-    password_ = db_man.get_password_existence()
-    if password_ == False:
-        pass
-    elif password_ == True
+    #password_ = db_man.get_password_existence()
+    #if password_ == False:
+        #pass
+    #elif password_ == True:
+        #pass
         #TODO - If password exists confirm password matches with username/account
+    login = True
+    return username, 0
 
     
 
 
-def main():
-    print(f'Welcome {username}')
+def main(username):
+    print(f'Welcome, {username}')
     print('- Select one -')
     while True:
         list_modes()
@@ -118,13 +121,14 @@ def main():
 
 if __name__ == '__main__':
     print('Welcome to ExpenseTrackerCLI!!!')
-    login_or_signup = input('Login(0) or Signup(1)')
+    print('\n')
+    login_or_signup = input('Login(0) or Signup(1) ')
     if int(login_or_signup) == 0:
-        print('/n' * 100)
+        print('\n' * 100)
         while True:
             username, login = login()
             if login == 0:               # 0 - runs main function of CLI version
-                print('/n' * 100)
+                print('\n' * 100)
                 main(username)
                 break
             elif login == 1:             # 1 - loops through login until different ending
@@ -133,6 +137,6 @@ if __name__ == '__main__':
                 break
     elif int(login_or_signup) == 1:
         create_user()
-        break
+        #TODO finish create user
 
 
