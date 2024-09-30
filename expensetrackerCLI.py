@@ -74,6 +74,8 @@ def create_user():    #Started as login became create_user
 def login():
     username = input('Enter Username: ')
     #password_ = db_man.get_password_existence()
+
+    #if username is_in_user_db()
     #if password_ == False:
         #pass
     #elif password_ == True:

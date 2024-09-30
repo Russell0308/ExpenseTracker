@@ -3,21 +3,28 @@ import sqlite3
 
 
 U_db_conn = sqlite3.connect('Users_db.sqlite3')
+db_conn = sqlite3.connect('data_db.sqlite3')
 
 
-def db_connect(username):
-    
-
-    db_conn = sqlite3.connect('db.sqlite3')
+#def db_connect(username):
+    #db_conn = sqlite3.connect('db.sqlite3')
 
 
 #def eat_password():
+    #pass
 
 
 def execute_query(query):
     curs = db_conn.cursor()
     curs.execute(query)
     db_conn.commit()
+    return curs.fetchall()
+
+
+def udb_execute_query(query):
+    curs = U_db_conn.cursor()
+    curs.execute(query)
+    U_db_conn.coommit()
     return curs.fetchall()
 
 
@@ -28,6 +35,7 @@ def insert_execute_query(query, data):
 
 
 def create_tables():
+    udb_execute_query(q.create_table_users)
     execute_query(q.create_table_expense)
     execute_query(q.create_table_paymethod)
     execute_query(q.create_table_bank)

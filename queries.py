@@ -92,6 +92,8 @@ get_next_pay_week = """SELECT * FROM pay_periods;"""
 
 get_paymethod_names = """SELECT method_name from paymethods;"""
 
+get_users = """SELECT username from   """
+
 # UPDATE TABLE VALUES #
 update_bank_balance = """UPDATE banks SET balance=? WHERE bank_id=?;"""
 
